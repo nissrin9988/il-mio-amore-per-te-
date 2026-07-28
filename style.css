@@ -1,8 +1,9 @@
 body {
   margin: 0;
   font-family: "Montserrat", Arial, sans-serif;
-  background: linear-gradient(180deg, #062016 0%, #0f2b1e 60%);
-  color: #f7f7f2;
+  /* sfondo aggiornato: tonalità più calde/gialle invece del verde */
+  background: linear-gradient(180deg, #1a1200 0%, #4a3200 60%);
+  color: #fffbe6;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -22,7 +23,7 @@ body {
   opacity: 0.9;
   animation: floatUp linear infinite;
   transform: translateY(0);
-  text-shadow: 0 0 6px rgba(255, 255, 200, 0.6);
+  text-shadow: 0 0 8px rgba(255, 240, 120, 0.8);
 }
 @keyframes floatUp {
   0% { transform: translateY(0) scale(1); opacity: 0; }
@@ -47,26 +48,27 @@ h1 {
   font-family: "Playfair Display", serif;
   font-weight: 600;
   margin: 0 0 8px 0;
-  color: #fffbe6;
+  color: #fff8d6;
 }
 .lead {
-  color: #e6f7df;
+  color: #fff6d1;
   margin-top: 0;
   margin-bottom: 18px;
   opacity: 0.95;
 }
 .btn {
-  background: linear-gradient(90deg,#9bdc55,#ffd54a);
-  color: #0b2b15;
+  /* gradient più giallo/oro */
+  background: linear-gradient(90deg,#ffd54a,#fff59d);
+  color: #4b3300;
   border: none;
   padding: 12px 18px;
   border-radius: 12px;
   cursor: pointer;
   font-weight: 600;
   transition: transform .15s ease, box-shadow .15s ease;
-  box-shadow: 0 6px 14px rgba(155,220,85,0.18);
+  box-shadow: 0 6px 14px rgba(255,200,70,0.18);
 }
-.btn:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(155,220,85,0.18); }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(255,200,70,0.22); }
 .section {
   margin-top: 18px;
   text-align: left;
@@ -86,7 +88,7 @@ h1 {
   height: 120px;
   object-fit: cover;
   border-radius: 10px;
-  border: 2px solid rgba(255,255,255,0.06);
+  border: 2px solid rgba(255,240,180,0.08);
 }
 
 /* Quiz buttons */
@@ -99,7 +101,11 @@ h1 {
   border: 1px solid rgba(255,255,255,0.04);
   cursor: pointer;
 }
-.choice.correct { background: linear-gradient(90deg,#9bdc55,#ffd54a); color:#04300e; border:none; }
+.choice.correct { background: linear-gradient(90deg,#ffd54a,#fff59d); color:#4b3300; border:none; box-shadow: 0 6px 14px rgba(255,200,70,0.12); }
+.choice.wrong { opacity: 0.8; filter: grayscale(20%); }
+
+/* Star buttons */
+.star-btn { background: transparent; border: 1px solid rgba(255,240,180,0.08); padding:8px 10px; border-radius:8px; cursor:pointer; font-size:18px; }
 
 /* Footer / small note */
-.note { font-size: 0.9rem; margin-top: 14px; color: #dcefd1; opacity:0.9; }
+.note { font-size: 0.9rem; margin-top: 14px; color: #fff3c9; opacity:0.95; }
