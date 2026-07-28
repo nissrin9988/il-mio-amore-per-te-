@@ -1,0 +1,105 @@
+body {
+  margin: 0;
+  font-family: "Montserrat", Arial, sans-serif;
+  background: linear-gradient(180deg, #062016 0%, #0f2b1e 60%);
+  color: #f7f7f2;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.stars-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.star {
+  position: absolute;
+  color: #fff;
+  font-size: 14px; /* adjust size for emoji */
+  opacity: 0.9;
+  animation: floatUp linear infinite;
+  transform: translateY(0);
+  text-shadow: 0 0 6px rgba(255, 255, 200, 0.6);
+}
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(-120vh) scale(0.9); opacity: 0; }
+}
+
+/* Card / layout */
+.card {
+  position: relative;
+  z-index: 2;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 36px;
+  border-radius: 18px;
+  max-width: 920px;
+  width: calc(100% - 48px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+}
+h1 {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: #fffbe6;
+}
+.lead {
+  color: #e6f7df;
+  margin-top: 0;
+  margin-bottom: 18px;
+  opacity: 0.95;
+}
+.btn {
+  background: linear-gradient(90deg,#9bdc55,#ffd54a);
+  color: #0b2b15;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform .15s ease, box-shadow .15s ease;
+  box-shadow: 0 6px 14px rgba(155,220,85,0.18);
+}
+.btn:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(155,220,85,0.18); }
+.section {
+  margin-top: 18px;
+  text-align: left;
+  animation: fadeIn .6s ease both;
+}
+@keyframes fadeIn { from { opacity: 0; transform: translateY(8px);} to { opacity: 1; transform: none; }}
+
+/* Gallery */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+.gallery img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid rgba(255,255,255,0.06);
+}
+
+/* Quiz buttons */
+.choice {
+  display: inline-block;
+  margin: 8px 8px 0 0;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.04);
+  cursor: pointer;
+}
+.choice.correct { background: linear-gradient(90deg,#9bdc55,#ffd54a); color:#04300e; border:none; }
+
+/* Footer / small note */
+.note { font-size: 0.9rem; margin-top: 14px; color: #dcefd1; opacity:0.9; }
