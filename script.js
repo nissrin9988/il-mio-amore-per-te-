@@ -30,16 +30,6 @@
       </header>
 
       <section class="section">
-        <h2>🎞 Galleria</h2>
-        <p>Le tue foto sono state caricate nella cartella <code>/images</code>.</p>
-        <div class="gallery" id="gallery">
-          <img src="images/BD8D067E-4004-4B98-A483-0046A436CF28_E8C20249-7741-4783-B4DD-B6457DBDC851.jpeg" alt="Foto 1">
-          <img src="images/IMG_0364.jpeg" alt="Foto 2">
-          <img src="images/ca7343d4-eaa5-4e89-89f6-e0cb7e61a69c.jpeg" alt="Foto 3">
-        </div>
-      </section>
-
-      <section class="section">
         <h2>🎮 Quiz rapido</h2>
         <p><b>1)</b> Qual è la cosa che più ci accomuna?</p>
         <div>
@@ -51,11 +41,32 @@
       </section>
 
       <section class="section">
+        <h2>🎞 Galleria</h2>
+        <p>Le tue foto sono state caricate nella cartella <code>/images</code>.</p>
+        <div class="gallery" id="gallery">
+          <img src="images/BD8D067E-4004-4B98-A483-0046A436CF28_E8C20249-7741-4783-B4DD-B6457DBDC851.jpeg" alt="Foto 1">
+          <img src="images/IMG_0364.jpeg" alt="Foto 2">
+          <img src="images/ca7343d4-eaa5-4e89-89f6-e0cb7e61a69c.jpeg" alt="Foto 3">
+        </div>
+        <p class="note" style="margin-top:10px;">Queste foto raccontano alcuni dei nostri ricordi — scorri per riviverli.</p>
+      </section>
+
+      <section class="section">
+        <h2>💖 I motivi per cui ti amo</h2>
+        <p>Alcuni piccoli motivi, ognuno rappresentato da una stella:</p>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px;">
+          <div><span style="font-size:20px;margin-right:8px;">⭐</span>Mi fai sentire sicura e capita.</div>
+          <div><span style="font-size:20px;margin-right:8px;">⭐</span>Mi fai ridere anche nelle giornate difficili.</div>
+          <div><span style="font-size:20px;margin-right:8px;">⭐</span>Sei presente senza bisogno di essere chiesto.</div>
+          <div><span style="font-size:20px;margin-right:8px;">⭐</span>Con te le piccole cose diventano speciali.</div>
+        </div>
+      </section>
+
+      <section class="section">
         <h2>💌 Lettera</h2>
         <p>Alla fine del giro troverai una piccola lettera. Quando vuoi, clicca il bottone qui sotto.</p>
         <button class="btn" onclick="showLetter()">Leggi la lettera</button>
-        <div id="letter" style="display:none;margin-top:12px;white-space:pre-wrap;">
-Amore,
+        <div id="letter" style="display:none;margin-top:12px;white-space:pre-wrap;">Amore,
 
 non so se tre o quattro mesi siano tanti o pochi. So solo che in così poco tempo sei riuscito a farmi provare qualcosa che, fino a poco fa, pensavo fosse quasi impossibile.
 
@@ -75,12 +86,11 @@ Spero di riuscire a farti sentire anche solo una parte di tutto quello che tu fa
 
 E se c’è una cosa che voglio dirti più di tutte è questa: grazie per avermi fatto conoscere un amore che non si deve inseguire, ma che si vive. Un amore che mi fa sentire finalmente a casa.
 
-Ti amo. E, se questo è solo l’inizio della nostra storia, non vedo la voglia di scoprire tutto quello che ci aspetta.
+Ti amo. E, se questo è solo l’inizio della nostra storia, non vedo l’ora di scoprire tutto quello che ci aspetta.
 
 Con tutto il mio cuore. 🌟
 
-laddove hai confermo tutto l'amore che provo per te
-        </div>
+</div>
       </section>
 
       <p class="note">Suggerimento: se vuoi cambiare i testi o le didascalie fammi sapere.</p>
@@ -102,6 +112,8 @@ laddove hai confermo tutto l'amore che provo per te
   window.showLetter = function() {
     const l = document.getElementById('letter');
     if (l) l.style.display = l.style.display === 'none' ? 'block' : 'none';
+    // scroll alla lettera quando viene mostrata (utile su mobile)
+    if (l && l.style.display === 'block') l.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
 
   // Avvia qualche stella fin da subito e collega il pulsante start
