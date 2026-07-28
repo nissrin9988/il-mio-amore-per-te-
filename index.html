@@ -1,157 +1,882 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Il nostro piccolo universo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20260728T1625">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Il nostro piccolo universo</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css?v=20260728T1625">
 </head>
+
 <body>
-  <div class="stars-bg" aria-hidden="true"></div>
 
-  <main class="card" id="app">
-    <div class="card-inner">
-      <header>
-        <h1>🌙 Il nostro piccolo universo</h1>
-        <p class="lead">Un piccolo viaggio creato da me, per te.</p>
-        <!-- start button degrades to anchor that jumps to quiz-section if JS is disabled -->
-        <a href="#quiz-section" id="startBtn" class="btn">✨ Inizia il viaggio</a>
-      </header>
+<div class="stars-bg" aria-hidden="true"></div>
 
-      <!-- QUIZ SECTION (fallback static markup) -->
-      <section class="section" id="quiz-section">
-        <h2>🎮 Quiz rapido</h2>
-        <div class="quiz" id="quiz">
-          <div class="q" data-answered="false" id="q0">
-            <p><b>1)</b> Qual è la cosa che più ci accomuna?</p>
-            <div>
-              <button class="choice" data-q="0" data-a="0">🍕 Il cibo</button>
-              <button class="choice" data-q="0" data-a="1">🎮 I videogiochi</button>
-              <button class="choice" data-q="0" data-a="2">😴 Dormire</button>
-              <button class="choice" data-q="0" data-a="3">🐱 I gatti</button>
-            </div>
-            <div class="feedback" data-q="0" aria-live="polite"></div>
-          </div>
+<main class="card" id="app">
 
-          <div class="q" data-answered="false" id="q1">
-            <p><b>2)</b> Cosa amo più di te?</p>
-            <div>
-              <button class="choice" data-q="1" data-a="0">💸 I tuoi soldi</button>
-              <button class="choice" data-q="1" data-a="1">Il fatto che mi sopporti ogni giorno</button>
-              <button class="choice" data-q="1" data-a="2">Che mi fai ridere</button>
-              <button class="choice" data-q="1" data-a="3">Il gelato 🍦</button>
-            </div>
-            <div class="feedback" data-q="1" aria-live="polite"></div>
-          </div>
+<div class="card-inner">
 
-          <div class="q" data-answered="false" id="q2">
-            <p><b>3)</b> Qual è la cosa che fai meglio?</p>
-            <div>
-              <button class="choice" data-q="2" data-a="0">Rubarmi le patatine</button>
-              <button class="choice" data-q="2" data-a="1">Addormentarti ovunque</button>
-              <button class="choice" data-q="2" data-a="2">Farmi arrabbiare per sport</button>
-              <button class="choice" data-q="2" data-a="3">Farmi sentire amata ❤️</button>
-            </div>
-            <div class="feedback" data-q="2" aria-live="polite"></div>
-          </div>
 
-          <div class="q" data-answered="false" id="q3">
-            <p><b>4)</b> Qual è il tuo superpotere?</p>
-            <div>
-              <button class="choice" data-q="3" data-a="0">Trovare sempre il lato negativo</button>
-              <button class="choice" data-q="3" data-a="1">Finire il cibo prima degli altri</button>
-              <button class="choice" data-q="3" data-a="2">Farmi ridere anche quando sono arrabbiata</button>
-              <button class="choice" data-q="3" data-a="3">Farmi innervosire quando devo scegliere un film</button>
-            </div>
-            <div class="feedback" data-q="3" aria-live="polite"></div>
-          </div>
-        </div>
+<!-- SLIDE INIZIALE SEPARATA -->
+<section class="section intro-section active" id="intro-section">
 
-        <!-- fallback forward button as anchor to photo section (works without JS) -->
-        <div id="after-quiz" style="margin-top:18px;">
-          <a href="#photo-section" class="btn" id="toPhotoBtnFallback">Vai alle foto 🌟</a>
-        </div>
+<h1>🌙 L'inizio del nostro viaggio</h1>
 
-        <!-- fallback nav (anchors) for non-JS navigation -->
-        <div class="nav-row">
-          <a class="btn" href="#" style="visibility:hidden;">Indietro</a>
-          <a class="btn" href="#photo-section">Avanti →</a>
-        </div>
-      </section>
+<p class="lead">
+Un piccolo viaggio creato da me, per te.
+</p>
 
-      <!-- PHOTO SECTION -->
-      <section class="section" id="photo-section">
-        <h2>🎞 Galleria</h2>
-        <div class="gallery" id="gallery">
-          <img src="images/IMG_0364.jpeg" alt="Foto principale">
-        </div>
-        <p class="note" style="margin-top:10px;">ogni sentimento che provo è racchiuso in questa unica foto</p>
-        <p class="caption" style="margin-top:6px;font-weight:700;">le due cose che amo di più assieme: te e il cibo!</p>
-        <div style="margin-top:12px;">
-          <!-- fallback: clicking this anchor goes to stars section if JS disabled -->
-          <a href="#stars-section" class="btn" id="seenPhotoBtnFallback">Ho visto la foto</a>
-        </div>
-        <div class="nav-row">
-          <a class="btn" href="#quiz-section">Indietro</a>
-          <a class="btn" href="#stars-section">Avanti →</a>
-        </div>
-      </section>
+<button class="btn" id="startJourneyBtn">
+✨ Inizia il viaggio
+</button>
 
-      <!-- STARS SECTION -->
-      <section class="section" id="stars-section">
-        <h2>💖 I motivi per cui ti amo</h2>
-        <p>Premi una stella per leggere il motivo corrispondente:</p>
-        <div id="stars" style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
-          <button class="star-btn" data-star="0">⭐</button>
-          <button class="star-btn" data-star="1">⭐</button>
-          <button class="star-btn" data-star="2">⭐</button>
-          <button class="star-btn" data-star="3">⭐</button>
-        </div>
-        <div id="star-content" style="margin-top:12px;min-height:40px;">
-          <!-- fallback content area -->
-        </div>
-        <div class="nav-row">
-          <a class="btn" href="#photo-section">Indietro</a>
-          <a class="btn" href="#letter-section">Avanti →</a>
-        </div>
-      </section>
+</section>
 
-      <!-- LETTER SECTION -->
-      <section class="section" id="letter-section">
-        <h2>💌 Lettera</h2>
-        <a class="btn" href="#letter" onclick="document.getElementById('letter').style.display='block'">Leggi la lettera</a>
-        <div id="letter" style="display:none;margin-top:12px;white-space:pre-wrap;">Amore,
 
-non so se tre o quattro mesi siano tanti o pochi. So solo che in così poco tempo sei riuscito a farmi provare qualcosa che, fino a poco fa, pensavo fosse quasi impossibile.
 
-Con te ho scoperto che l’amore non si misura dai regali o dai grandi gesti, ma dalle piccole cose di ogni giorno. Dalle attenzioni che arrivano senza doverle chiedere, dai messaggi, dalla tua presenza costante, dal modo in cui riesci a farmi sentire importante senza mai essere invadente.
+<!-- QUIZ -->
 
-Mi hai fatta sentire scelta fin dall’inizio. Non mi hai lasciata nel dubbio, non mi hai costretta a interpretare silenzi o comportamenti. Hai voluto costruire qualcosa con me e hai avuto il coraggio di dimostrarmelo con i fatti. È una cosa che oggi sembra rara, e io non smetterò mai di esserne grata.
+<section class="section" id="quiz-section">
 
-Sai qual è la cosa più bella? Che con te mi sento serena. Non sento il bisogno di rincorrere, di convincere qualcuno a restare o di chiedere attenzioni. Tu ci sei. E ci sei nel modo più semplice e sincero possibile.
+<h2>🎮 Quiz rapido</h2>
 
-Mi fai sentire al sicuro, ascoltata, capita. Mi fai sorridere anche nelle giornate più pesanti e riesci a rendere speciale perfino un momento qualunque. Senza accorgertene, mi hai insegnato che il vero amore non è fatto di promesse enormi, ma di presenza, rispetto, chiarezza e cura.
+<div class="quiz" id="quiz">
 
-Forse è presto per qualcuno, ma per me il tempo conta meno di come una persona ti fa sentire. E tu, in così poco tempo, mi hai dato una tranquillità che non avevo mai conosciuto.
 
-Grazie perché sei paziente con me. Grazie perché mi fai sentire vista. Grazie perché ogni giorno scegli di esserci e mi dimostri che l’amore non dovrebbe mai farmi dubitare di essere abbastanza.
+<div class="q" data-answered="false">
 
-Spero di riuscire a farti sentire anche solo una parte di tutto quello che tu fai sentire a me. Perché te lo meriti davvero.
+<p><b>1)</b> Qual è la cosa che più ci accomuna?</p>
 
-E se c’è una cosa che voglio dirti più di tutte è questa: grazie per avermi fatto conoscere un amore che non si deve inseguire, ma che si vive. Un amore che mi fa sentire finalmente a casa.
+<div>
 
-Ti amo. E, se questo è solo l’inizio della nostra storia, non vedo l'ora di scoprire tutto quello che ci aspetta.
+<button class="choice" data-q="0" data-a="0">
+🍕 Il cibo
+</button>
+
+<button class="choice" data-q="0" data-a="1">
+🎮 I videogiochi
+</button>
+
+<button class="choice" data-q="0" data-a="2">
+😴 Dormire
+</button>
+
+<button class="choice" data-q="0" data-a="3">
+🐱 I gatti
+</button>
+
+</div>
+
+</div>
+
+
+
+<div class="q" data-answered="false">
+
+<p><b>2)</b> Cosa amo più di te?</p>
+
+<div>
+
+<button class="choice" data-q="1" data-a="0">
+💸 I tuoi soldi
+</button>
+
+<button class="choice" data-q="1" data-a="1">
+Il fatto che mi sopporti ogni giorno
+</button>
+
+<button class="choice" data-q="1" data-a="2">
+Che mi fai ridere
+</button>
+
+<button class="choice" data-q="1" data-a="3">
+Il gelato 🍦
+</button>
+
+</div>
+
+</div>
+
+
+
+<div class="q" data-answered="false">
+
+<p><b>3)</b> Qual è la cosa che fai meglio?</p>
+
+<div>
+
+<button class="choice" data-q="2" data-a="0">
+Rubarmi le patatine
+</button>
+
+<button class="choice" data-q="2" data-a="1">
+Addormentarti ovunque
+</button>
+
+<button class="choice" data-q="2" data-a="2">
+Farmi arrabbiare per sport
+</button>
+
+<button class="choice" data-q="2" data-a="3">
+Farmi sentire amata ❤️
+</button>
+
+</div>
+
+</div>
+
+
+
+<div class="q" data-answered="false">
+
+<p><b>4)</b> Qual è il tuo superpotere?</p>
+
+<div>
+
+<button class="choice" data-q="3" data-a="0">
+Trovare sempre il lato negativo
+</button>
+
+<button class="choice" data-q="3" data-a="1">
+Finire il cibo prima degli altri
+</button>
+
+<button class="choice" data-q="3" data-a="2">
+Farmi ridere anche quando sono arrabbiata
+</button>
+
+<button class="choice" data-q="3" data-a="3">
+Farmi innervosire quando devo scegliere un film
+</button>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div id="after-quiz"></div>
+
+
+<div class="nav-row">
+
+<button class="btn prev-btn" data-prev="intro-section">
+←
+</button>
+
+<button class="btn next-btn" data-next="photo-section">
+→
+</button>
+
+</div>
+
+
+</section>
+<!-- FOTO -->
+
+<section class="section" id="photo-section">
+
+<h2>🎞 Galleria</h2>
+
+<div class="gallery">
+
+<img src="images/IMG_0364.jpeg" alt="Foto principale">
+
+</div>
+
+
+<p class="note">
+Ogni sentimento che provo è racchiuso in questa unica foto.
+</p>
+
+<p class="caption">
+Le due cose che amo di più assieme: te e il cibo! ❤️
+</p>
+
+
+<button class="btn" id="seenPhotoBtn">
+Ho visto la foto
+</button>
+
+
+<div class="nav-row">
+
+<button class="btn prev-btn" data-prev="quiz-section">
+←
+</button>
+
+<button class="btn next-btn" data-next="stars-section">
+→
+</button>
+
+</div>
+
+
+</section>
+
+
+
+
+
+<!-- STELLE -->
+
+<section class="section" id="stars-section">
+
+
+<h2>💖 I motivi per cui ti amo</h2>
+
+
+<p>
+Premi una stella per leggere il motivo corrispondente:
+</p>
+
+
+<div id="stars">
+
+<button class="star-btn" data-star="0">
+⭐
+</button>
+
+<button class="star-btn" data-star="1">
+⭐
+</button>
+
+<button class="star-btn" data-star="2">
+⭐
+</button>
+
+<button class="star-btn" data-star="3">
+⭐
+</button>
+
+</div>
+
+
+
+<div id="star-content">
+
+</div>
+
+
+
+<div class="nav-row">
+
+<button class="btn prev-btn" data-prev="photo-section">
+←
+</button>
+
+<button class="btn next-btn" data-next="letter-section">
+→
+</button>
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+<!-- LETTERA -->
+
+
+<section class="section" id="letter-section">
+
+
+<h2>💌 Lettera</h2>
+
+
+<button class="btn" id="openLetterBtn">
+Leggi la lettera
+</button>
+
+
+<div id="letter">
+
+
+Amore,
+
+
+non so se tre o quattro mesi siano tanti o pochi.
+So solo che in così poco tempo sei riuscito a farmi provare qualcosa che, fino a poco fa, pensavo fosse quasi impossibile.
+
+
+Con te ho scoperto che l’amore non si misura dai regali o dai grandi gesti, ma dalle piccole cose di ogni giorno.
+
+
+Dalle attenzioni che arrivano senza doverle chiedere, dai messaggi, dalla tua presenza costante, dal modo in cui riesci a farmi sentire importante senza mai essere invadente.
+
+
+Mi hai fatta sentire scelta fin dall’inizio.
+
+
+Non mi hai lasciata nel dubbio, non mi hai costretta a interpretare silenzi o comportamenti.
+
+
+Hai voluto costruire qualcosa con me e hai avuto il coraggio di dimostrarmelo con i fatti.
+
+
+È una cosa che oggi sembra rara, e io non smetterò mai di esserne grata.
+
+
+Sai qual è la cosa più bella?
+
+
+Che con te mi sento serena.
+
+
+Non sento il bisogno di rincorrere, di convincere qualcuno a restare o di chiedere attenzioni.
+
+
+Tu ci sei.
+
+
+E ci sei nel modo più semplice e sincero possibile.
+
+
+Mi fai sentire al sicuro, ascoltata, capita.
+
+
+Mi fai sorridere anche nelle giornate più pesanti e riesci a rendere speciale perfino un momento qualunque.
+
+
+Forse è presto per qualcuno, ma per me il tempo conta meno di come una persona ti fa sentire.
+
+
+E tu, in così poco tempo, mi hai dato una tranquillità che non avevo mai conosciuto.
+
+
+Grazie perché sei paziente con me.
+
+
+Grazie perché mi fai sentire vista.
+
+
+Grazie perché ogni giorno scegli di esserci.
+
+
+Ti amo.
+
+
+E, se questo è solo l’inizio della nostra storia, non vedo l’ora di scoprire tutto quello che ci aspetta.
+
 
 Con tutto il mio cuore. 🌟
 
+
 </div>
-      </section>
 
-      <p class="note">Suggerimento: se vuoi cambiare i testi o le didascalie fammi sapere.</p>
-    </div>
-  </main>
 
-  <script src="script.js?v=20260728T1625"></script>
+
+<div class="nav-row">
+
+<button class="btn prev-btn" data-prev="stars-section">
+←
+</button>
+
+</div>
+
+
+</section>
+
+
+
+</div>
+
+</main>
+
+
+
+<script src="script.js?v=20260728T1625"></script>
+
+
 </body>
 </html>
+
+:root{
+  --bg-start:#fffbe6;
+  --bg-end:#f3ffe9;
+  --btn-start:#fff08a;
+  --btn-end:#c9f08a;
+  --accent:#b9e86a;
+  --text-dark:#2b3b2b;
+  --card-bg:rgba(255,255,255,0.85);
+}
+
+
+*{
+  box-sizing:border-box;
+}
+
+
+body{
+
+  margin:0;
+
+  font-family:"Montserrat",Arial,sans-serif;
+
+  background:
+  linear-gradient(180deg,var(--bg-start),var(--bg-end));
+
+  color:var(--text-dark);
+
+  min-height:100vh;
+
+  display:flex;
+
+  justify-content:center;
+
+  align-items:center;
+
+  overflow-x:hidden;
+
+}
+
+
+
+.stars-bg{
+
+position:fixed;
+
+inset:0;
+
+pointer-events:none;
+
+z-index:0;
+
+overflow:hidden;
+
+}
+
+
+
+.star{
+
+position:absolute;
+
+color:white;
+
+font-size:14px;
+
+animation:floatUp linear infinite;
+
+text-shadow:0 0 10px rgba(255,255,200,.8);
+
+}
+
+
+
+@keyframes floatUp{
+
+0%{
+transform:translateY(0);
+opacity:0;
+}
+
+10%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-120vh);
+opacity:0;
+}
+
+}
+
+
+
+
+.card{
+
+position:relative;
+
+z-index:2;
+
+width:calc(100% - 40px);
+
+max-width:920px;
+
+padding:20px;
+
+}
+
+
+
+.card-inner{
+
+background:var(--card-bg);
+
+border-radius:18px;
+
+padding:30px;
+
+box-shadow:
+0 18px 40px rgba(60,90,60,.08);
+
+min-height:500px;
+
+position:relative;
+
+padding-bottom:90px;
+
+}
+
+
+
+
+h1,h2{
+
+font-family:"Playfair Display",serif;
+
+color:var(--text-dark);
+
+}
+
+
+
+h1{
+
+font-size:2rem;
+
+margin-bottom:10px;
+
+}
+
+
+
+.lead{
+
+margin-top:0;
+
+opacity:.9;
+
+}
+
+
+
+
+.btn{
+
+background:
+
+linear-gradient(
+90deg,
+var(--btn-start),
+var(--btn-end)
+);
+
+border:none;
+
+padding:12px 18px;
+
+border-radius:12px;
+
+cursor:pointer;
+
+font-weight:700;
+
+color:var(--text-dark);
+
+text-decoration:none;
+
+display:inline-block;
+
+transition:.2s;
+
+}
+
+
+
+.btn:hover{
+
+transform:translateY(-3px);
+
+}
+
+
+
+
+
+/* SEZIONI / SLIDE */
+
+.section{
+
+display:none;
+
+animation:fadeIn .4s ease;
+
+text-align:left;
+
+}
+
+
+
+.section.active{
+
+display:block;
+
+}
+
+
+
+.intro-section{
+
+text-align:center;
+
+padding:80px 20px;
+
+}
+
+
+
+@keyframes fadeIn{
+
+from{
+
+opacity:0;
+
+transform:translateY(15px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:none;
+
+}
+
+}
+
+
+
+
+/* GALLERIA */
+
+.gallery img{
+
+width:100%;
+
+max-height:70vh;
+
+object-fit:contain;
+
+border-radius:12px;
+
+border:2px solid rgba(200,230,170,.35);
+
+}
+
+
+
+
+
+/* QUIZ */
+
+.choice{
+
+display:inline-block;
+
+margin:8px;
+
+padding:10px 14px;
+
+border-radius:10px;
+
+background:white;
+
+border:1px solid rgba(200,220,160,.25);
+
+cursor:pointer;
+
+}
+
+
+
+.choice.correct{
+
+background:#d8f08a;
+
+}
+
+
+
+.choice.wrong{
+
+opacity:.6;
+
+}
+
+
+
+
+/* STELLE */
+
+#stars{
+
+display:flex;
+
+gap:12px;
+
+flex-wrap:wrap;
+
+}
+
+
+
+.star-btn{
+
+background:#fff9c4;
+
+border:1px solid rgba(180,210,160,.3);
+
+padding:10px;
+
+border-radius:10px;
+
+font-size:22px;
+
+cursor:pointer;
+
+}
+
+
+
+
+.reason{
+
+margin-top:15px;
+
+padding:15px;
+
+background:white;
+
+border-radius:12px;
+
+}
+
+
+
+
+/* LETTERA */
+
+#letter{
+
+display:none;
+
+white-space:pre-wrap;
+
+line-height:1.7;
+
+margin-top:20px;
+
+}
+
+
+
+
+
+/* FRECCE IN BASSO */
+
+.nav-row{
+
+position:fixed;
+
+bottom:20px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+display:flex;
+
+gap:25px;
+
+z-index:1000;
+
+}
+
+
+
+.nav-row .btn{
+
+width:55px;
+
+height:45px;
+
+padding:0;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:22px;
+
+border-radius:50%;
+
+}
+
+
+
+
+.note{
+
+margin-top:20px;
+
+opacity:.85;
+
+}
+
+
+
+
+@media(max-width:600px){
+
+
+.card{
+
+width:100%;
+
+padding:10px;
+
+}
+
+
+.card-inner{
+
+padding:20px;
+
+padding-bottom:100px;
+
+}
+
+
+
+h1{
+
+font-size:1.6rem;
+
+}
+
+
+
+.nav-row{
+
+bottom:15px;
+
+}
+
+
+
+}
