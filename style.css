@@ -151,3 +151,36 @@ h1 {
   .card-inner { padding: 18px; }
   .btn { width: 100%; }
 }
+
+/* Feedback per le risposte */
+.feedback {
+  margin-top: 8px;
+  font-weight: 700;
+  min-height: 1.2em;
+}
+.feedback.fb-correct { color: #1e7a2e; /* verde */ }
+.feedback.fb-wrong   { color: #b92e2e; /* rosso */ }
+
+/* Evidenziazione risposta corretta / sbagliata */
+.choice.correct { outline: 3px solid rgba(30,122,46,0.12); }
+.choice.wrong { opacity: 0.85; filter: grayscale(20%); }
+
+/* Pulsanti freccia per la navigazione */
+.nav-arrow {
+  margin-left: 8px;
+  margin-top: 6px;
+  background: linear-gradient(90deg,var(--btn-start),var(--btn-end));
+  border: none;
+  color: var(--text-dark);
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(160,190,120,0.12);
+}
+.nav-arrow:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(160,190,120,0.16); }
+
+/* Visibilità su mobile: freccine più compatte */
+@media (max-width:600px){
+  .nav-arrow { padding: 8px 10px; font-size: 0.95rem; margin-left:6px; }
+}
