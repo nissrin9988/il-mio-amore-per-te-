@@ -12,15 +12,19 @@
 
   <main class="card" id="app">
     <div class="card-inner">
-      <header>
-        <h1>🌙 Il nostro piccolo universo</h1>
-        <p class="lead">Un piccolo viaggio creato da me, per te.</p>
-        <!-- start button degrades to anchor that jumps to quiz-section if JS is disabled -->
-        <a href="#quiz-section" id="startBtn" class="btn">✨ Inizia il viaggio</a>
-      </header>
+      <!-- INTRO / LANDING - prima cosa che si vede -->
+      <section id="intro-section" class="intro">
+        <header>
+          <h1>🌙 Il nostro piccolo universo</h1>
+          <p class="lead">Un piccolo viaggio creato da me, per te.</p>
+          <div style="margin-top:18px;">
+            <button id="startBtn" class="btn">✨ Inizia il viaggio</button>
+          </div>
+        </header>
+      </section>
 
-      <!-- QUIZ SECTION (fallback static markup) -->
-      <section class="section" id="quiz-section">
+      <!-- QUIZ SECTION -->
+      <section class="section" id="quiz-section" aria-hidden="true">
         <h2>🎮 Quiz rapido</h2>
         <div class="quiz" id="quiz">
           <div class="q" data-answered="false" id="q0">
@@ -68,43 +72,28 @@
           </div>
         </div>
 
-        <!-- fallback forward button as anchor to photo section (works without JS) -->
-        <div id="after-quiz" style="margin-top:18px;">
-          <a href="#photo-section" class="btn" id="toPhotoBtnFallback">Vai alle foto 🌟</a>
-        </div>
-
-        <!-- fallback nav (anchors) for non-JS navigation -->
         <div class="nav-row">
-          <a class="btn" href="#" style="visibility:hidden;">Indietro</a>
-          <a class="btn" href="#photo-section">Avanti →</a>
-          <!-- freccine per JS-enabled navigation -->
           <button class="nav-arrow prev" type="button" aria-label="Indietro">←</button>
           <button class="nav-arrow next" type="button" aria-label="Avanti">→</button>
         </div>
       </section>
 
       <!-- PHOTO SECTION -->
-      <section class="section" id="photo-section">
+      <section class="section" id="photo-section" aria-hidden="true">
         <h2>🎞 Galleria</h2>
         <div class="gallery" id="gallery">
           <img src="images/IMG_0364.jpeg" alt="Foto principale">
         </div>
         <p class="note" style="margin-top:10px;">ogni sentimento che provo è racchiuso in questa unica foto</p>
         <p class="caption" style="margin-top:6px;font-weight:700;">le due cose che amo di più assieme: te e il cibo!</p>
-        <div style="margin-top:12px;">
-          <!-- fallback: clicking this anchor goes to stars section if JS disabled -->
-          <a href="#stars-section" class="btn" id="seenPhotoBtnFallback">Ho visto la foto</a>
-        </div>
         <div class="nav-row">
-          <a class="btn" href="#quiz-section">Indietro</a>
-          <a class="btn" href="#stars-section">Avanti →</a>
           <button class="nav-arrow prev" type="button" aria-label="Indietro">←</button>
           <button class="nav-arrow next" type="button" aria-label="Avanti">→</button>
         </div>
       </section>
 
       <!-- STARS SECTION -->
-      <section class="section" id="stars-section">
+      <section class="section" id="stars-section" aria-hidden="true">
         <h2>💖 I motivi per cui ti amo</h2>
         <p>Premi una stella per leggere il motivo corrispondente:</p>
         <div id="stars" style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
@@ -117,15 +106,13 @@
           <!-- fallback content area -->
         </div>
         <div class="nav-row">
-          <a class="btn" href="#photo-section">Indietro</a>
-          <a class="btn" href="#letter-section">Avanti →</a>
           <button class="nav-arrow prev" type="button" aria-label="Indietro">←</button>
           <button class="nav-arrow next" type="button" aria-label="Avanti">→</button>
         </div>
       </section>
 
       <!-- LETTER SECTION -->
-      <section class="section" id="letter-section">
+      <section class="section" id="letter-section" aria-hidden="true">
         <h2>💌 Lettera</h2>
         <a class="btn" href="#letter" onclick="document.getElementById('letter').style.display='block'">Leggi la lettera</a>
         <div id="letter" style="display:none;margin-top:12px;white-space:pre-wrap;">Amore,
@@ -154,8 +141,6 @@ Con tutto il mio cuore. 🌟
 
 </div>
         <div class="nav-row">
-          <a class="btn" href="#stars-section">Indietro</a>
-          <a class="btn" href="#">Fine</a>
           <button class="nav-arrow prev" type="button" aria-label="Indietro">←</button>
           <button class="nav-arrow next" type="button" aria-label="Avanti">→</button>
         </div>
