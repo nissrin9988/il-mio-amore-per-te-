@@ -166,6 +166,7 @@ h1 {
 .choice.wrong { opacity: 0.85; filter: grayscale(20%); }
 
 /* Pulsanti freccia per la navigazione */
+.nav-row { display:flex; justify-content:space-between; align-items:center; }
 .nav-arrow {
   margin-left: 8px;
   margin-top: 6px;
