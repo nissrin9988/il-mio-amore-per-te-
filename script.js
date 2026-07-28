@@ -19,12 +19,26 @@
     }
   }
 
+  // Mostra una sola sezione alla volta con transizione
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => {
+      if (s.id === id) {
+        s.classList.add('active');
+        s.style.display = 'block';
+        s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        s.classList.remove('active');
+        s.style.display = 'none';
+      }
+    });
+  }
+
   // Contenuto principale mostrato quando l'utente clicca "Apri il viaggio"
   function start() {
     createStars(36);
     const app = document.getElementById('app');
     app.innerHTML = `
-      <div class="card">
+      <div class="card-inner">
         <header>
           <h1>🌙 Il nostro piccolo universo</h1>
           <p class="lead">Un piccolo viaggio creato da me, per te.</p>
@@ -33,7 +47,7 @@
         <section class="section" id="quiz-section">
           <h2>🎮 Quiz rapido</h2>
           <div class="quiz" id="quiz">
-            <div class="q">
+            <div class="q" data-answered="false">
               <p><b>1)</b> Qual è la cosa che più ci accomuna?</p>
               <div>
                 <button class="choice" data-q="0" data-a="0">🍕 Il cibo</button>
@@ -43,7 +57,7 @@
               </div>
             </div>
 
-            <div class="q">
+            <div class="q" data-answered="false">
               <p><b>2)</b> Cosa amo più di te?</p>
               <div>
                 <button class="choice" data-q="1" data-a="0">💸 I tuoi soldi</button>
@@ -53,7 +67,7 @@
               </div>
             </div>
 
-            <div class="q">
+            <div class="q" data-answered="false">
               <p><b>3)</b> Qual è la cosa che fai meglio?</p>
               <div>
                 <button class="choice" data-q="2" data-a="0">Rubarmi le patatine</button>
@@ -63,7 +77,7 @@
               </div>
             </div>
 
-            <div class="q">
+            <div class="q" data-answered="false">
               <p><b>4)</b> Qual è il tuo superpotere?</p>
               <div>
                 <button class="choice" data-q="3" data-a="0">Trovare sempre il lato negativo</button>
@@ -73,6 +87,7 @@
               </div>
             </div>
           </div>
+          <div id="after-quiz" style="margin-top:18px;display:none;"></div>
         </section>
 
         <section class="section" id="photo-section">
@@ -80,17 +95,18 @@
           <div class="gallery" id="gallery">
             <img src="images/IMG_0364.jpeg" alt="Foto principale">
           </div>
-          <p class="note" style="margin-top:10px;">Queste foto raccontano alcuni dei nostri ricordi — scorri per riviverli.</p>
+          <p class="note" style="margin-top:10px;">ogni sentimento che provo è racchiuso in questa unica foto, con le due cose che preferisco di più, te e il cibo!! ti amo</p>
+          <div style="margin-top:12px;"><button class="btn" id="seenPhotoBtn">Ho visto la foto</button></div>
         </section>
 
         <section class="section" id="stars-section">
           <h2>💖 I motivi per cui ti amo</h2>
           <p>Premi una stella per leggere il motivo corrispondente:</p>
           <div id="stars" style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;">
-            <button class="star-btn" data-star="0">⭐</button>
-            <button class="star-btn" data-star="1">⭐</button>
-            <button class="star-btn" data-star="2">⭐</button>
-            <button class="star-btn" data-star="3">⭐</button>
+            <button class="star-btn" data-star="0" disabled>⭐</button>
+            <button class="star-btn" data-star="1" disabled>⭐</button>
+            <button class="star-btn" data-star="2" disabled>⭐</button>
+            <button class="star-btn" data-star="3" disabled>⭐</button>
           </div>
           <div id="star-content" style="margin-top:12px;min-height:40px;">
             <!-- contenuti mostrati cliccando le stelle -->
@@ -114,7 +130,7 @@ Mi fai sentire al sicuro, ascoltata, capita. Mi fai sorridere anche nelle giorna
 
 Forse è presto per qualcuno, ma per me il tempo conta meno di come una persona ti fa sentire. E tu, in così poco tempo, mi hai dato una tranquillità che non avevo mai conosciuto.
 
-Grazie perché sei paziente con me. Grazie perché mi fai sentire vista. Grazie perché ogni giorno scegli di esserci e mi dimostri che l’amore non dovrebbe mai farmi dubitare di essere abbastan[...]
+Grazie perché sei paziente con me. Grazie perché mi fai sentire vista. Grazie perché ogni giorno scegli di esserci e mi dimostri che l’amore non dovrebbe mai farmi dubitare di essere abbastanza.
 
 Spero di riuscire a farti sentire anche solo una parte di tutto quello che tu fai sentire a me. Perché te lo meriti davvero.
 
@@ -134,18 +150,50 @@ Con tutto il mio cuore. 🌟
     // Dopo aver inserito il markup, colleghiamo i comportamenti dinamici
     setTimeout(() => {
       const correctAnswers = [0, 3, 2, 1]; // Q1, Q2, Q3, Q4
+      let completedCount = 0;
+      const totalQuestions = 4;
+
+      // inizialmente mostra solo il quiz
+      showSection('quiz-section');
+
       document.querySelectorAll('.choice').forEach(btn => {
         btn.addEventListener('click', (e) => {
           const q = Number(btn.getAttribute('data-q'));
           const a = Number(btn.getAttribute('data-a'));
           const parent = btn.closest('.q');
           if (!parent) return;
+          // if this question already answered, ignore
+          if (parent.getAttribute('data-answered') === 'true') return;
+          parent.setAttribute('data-answered','true');
+
           parent.querySelectorAll('.choice').forEach(c => { c.classList.remove('correct','wrong'); c.disabled = true; });
-          if (a === correctAnswers[q]) { btn.classList.add('correct'); alert('✅ Giusto!'); } else { btn.classList.add('wrong'); alert('❌ Non è corretto.'); }
+          if (a === correctAnswers[q]) { btn.classList.add('correct'); } else { btn.classList.add('wrong'); }
+
+          // increment completed count and check
+          completedCount += 1;
+          if (completedCount === totalQuestions) {
+            // show the custom button text as requested
+            const after = document.getElementById('after-quiz');
+            after.innerHTML = `<button class="btn" id="toPhotoBtn">e non abbiamo ancora finito, schiaccia la stellina qua🌟</button>`;
+            const toPhoto = document.getElementById('toPhotoBtn');
+            toPhoto.addEventListener('click', () => {
+              // navigate to photo section (single-view)
+              showSection('photo-section');
+            });
+          }
         });
       });
 
-      // Stelle cliccabili
+      // Photo seen button
+      document.addEventListener('click', (e) => {
+        if (e.target && e.target.id === 'seenPhotoBtn') {
+          // enable stars and go to stars section
+          document.querySelectorAll('.star-btn').forEach(b => { b.disabled = false; });
+          showSection('stars-section');
+        }
+      });
+
+      // Stelle cliccabili con conteggio: la lettera si sblocca dopo tutte le stelle
       const reasons = [
         'Mi fai sentire sicura e capita: la tua presenza e le tue attenzioni rendono ogni giorno più leggero.',
         'Mi fai ridere anche nelle giornate difficili: il tuo umorismo è un rifugio.',
@@ -153,13 +201,17 @@ Con tutto il mio cuore. 🌟
         'Con te le piccole cose diventano speciali: rendi unico anche un pomeriggio qualunque.'
       ];
       const starContent = document.getElementById('star-content');
+      let starsClicked = new Set();
       document.querySelectorAll('.star-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           const i = Number(btn.getAttribute('data-star'));
-          if (starContent.getAttribute('data-current') == i) { starContent.innerHTML = ''; starContent.removeAttribute('data-current'); return; }
-          starContent.setAttribute('data-current', i);
-          starContent.innerHTML = `<div style="padding:12px;border-radius:10px;background:rgba(255,255,255,0.03);border:1px solid rgba(0,0,0,0.06);">${reasons[i]}</div>`;
-          starContent.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          starsClicked.add(i);
+          starContent.innerHTML = `<div class="reason">${reasons[i]}</div>`;
+
+          // if all stars clicked, reveal letter section
+          if (starsClicked.size === document.querySelectorAll('.star-btn').length) {
+            showSection('letter-section');
+          }
         });
       });
     },50);
@@ -171,13 +223,13 @@ Con tutto il mio cuore. 🌟
     overlay.id = 'intro-overlay';
     overlay.style.position = 'fixed';
     overlay.style.inset = 0;
-    overlay.style.background = 'linear-gradient(180deg, rgba(10,10,8,0.95), rgba(30,20,6,0.92))';
+    overlay.style.background = 'linear-gradient(180deg, rgba(255,250,240,0.95), rgba(255,245,220,0.92))';
     overlay.style.display = 'flex';
     overlay.style.alignItems = 'center';
     overlay.style.justifyContent = 'center';
     overlay.style.zIndex = 9999;
     overlay.innerHTML = `
-      <div style="text-align:center;color:#fffbe6;padding:28px;border-radius:12px;max-width:360px;">
+      <div style="text-align:center;color:#4b3300;padding:28px;border-radius:12px;max-width:420px;">
         <h2 style="margin:0 0 8px;">Benvenuta</h2>
         <p style="margin:0 0 18px;">Premi il pulsante per aprire il viaggio</p>
         <button class="btn" id="openBtn">Apri il viaggio</button>
