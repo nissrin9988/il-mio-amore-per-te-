@@ -31,11 +31,11 @@
 
       <section class="section">
         <h2>🎞 Galleria</h2>
-        <p>Carica le tue foto nella cartella <code>/images</code>. Qui sotto ci sono segnaposto che potrai sostituire.</p>
+        <p>Le tue foto sono state caricate nella cartella <code>/images</code>.</p>
         <div class="gallery" id="gallery">
-          <img src="images/image1.jpg" alt="Foto 1 (sostituisci con la tua foto)">
-          <img src="images/image2.jpg" alt="Foto 2 (sostituisci con la tua foto)">
-          <img src="images/image3.jpg" alt="Foto 3 (sostituisci con la tua foto)">
+          <img src="images/BD8D067E-4004-4B98-A483-0046A436CF28_E8C20249-7741-4783-B4DD-B6457DBDC851.jpeg" alt="Foto 1">
+          <img src="images/IMG_0364.jpeg" alt="Foto 2">
+          <img src="images/ca7343d4-eaa5-4e89-89f6-e0cb7e61a69c.jpeg" alt="Foto 3">
         </div>
       </section>
 
@@ -75,13 +75,15 @@ Spero di riuscire a farti sentire anche solo una parte di tutto quello che tu fa
 
 E se c’è una cosa che voglio dirti più di tutte è questa: grazie per avermi fatto conoscere un amore che non si deve inseguire, ma che si vive. Un amore che mi fa sentire finalmente a casa.
 
-Ti amo. E, se questo è solo l’inizio della nostra storia, non vedo l’ora di scoprire tutto quello che ci aspetta.
+Ti amo. E, se questo è solo l’inizio della nostra storia, non vedo la voglia di scoprire tutto quello che ci aspetta.
 
 Con tutto il mio cuore. 🌟
+
+laddove hai confermo tutto l'amore che provo per te
         </div>
       </section>
 
-      <p class="note">Suggerimento: sostituisci i file in /images con le tue foto mantenendo gli stessi nomi (image1.jpg, image2.jpg, ...)</p>
+      <p class="note">Suggerimento: se vuoi cambiare i testi o le didascalie fammi sapere.</p>
     `;
   }
 
